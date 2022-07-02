@@ -1,17 +1,26 @@
 <template>
   <div class="main-wrapper">
     <catalog-view/>
+    <cart-view />
   </div>
 </template>
 
 <script>
 import CatalogView from '@/components/catalog-view'
-
+import CartView from '@/components/cart-view'
+import {mapGetters} from 'vuex'
 export default {
   name: "main-wrapper",
   components:{
-    CatalogView
+    CatalogView, CartView
+  },
+  methods:{},
+  computed:{
+    ...mapGetters([
+      'cartPrint'
+    ])
   }
+
 }
 </script>
 <style>

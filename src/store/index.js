@@ -4,7 +4,8 @@ import axios from "axios";
 const store = createStore({
     state () {
         return{
-            products:[]
+            products:[],
+            cart:[]
         }
     },
     mutations: {
@@ -15,6 +16,9 @@ const store = createStore({
     getters:{
         productsPrint(state){
             return state.products
+        },
+        cartPrint(state){
+            return state.cart
         }
     },
     actions:{
