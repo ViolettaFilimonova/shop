@@ -3,8 +3,9 @@
     <h2>Catalog</h2>
     <div class="catalog__list">
       <catalog-item
-          v-for="product in products" :key="product.id"
+          v-for="product in productsPrint" :key="product.id"
           :product="product"
+          @sendIdCardss="printIdCard"
       />
     </div>
   </div>
@@ -12,6 +13,7 @@
 
 <script>
 import CatalogItem from '@/components/catalog-item'
+import {mapActions, mapGetters} from 'vuex'
 export default {
   name: "catalog-view",
   components:{
@@ -19,17 +21,25 @@ export default {
   },
   data(){
     return{
-      products:[
-        { id: 1, title: "T-shirt", price: 1245 },
-        { id: 2, title: "T-shirt", price: 1235 },
-        { id: 3, title: "T-shirt", price: 1355 },
-        { id: 4, title: "T-shirt", price: 1855 },
-        { id: 5, title: "T-shirt", price: 1245 },
-        { id: 6, title: "T-shirt", price: 1235 },
-        { id: 7, title: "T-shirt", price: 1355 },
-        { id: 8, title: "T-shirt", price: 1855 }
-      ]
+
     }
+  },
+  methods:{
+    ...mapActions([
+      'getProducts'
+    ]),
+    printIdCard(dataId){
+      console.log(dataId)
+    }
+  },
+  computed:{
+    ...mapGetters([
+        'productsPrint'
+    ])
+  },
+  mounted() {
+    this.getProducts()
+
   }
 }
 </script>

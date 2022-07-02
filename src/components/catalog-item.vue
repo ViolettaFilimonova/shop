@@ -3,7 +3,7 @@
     <img class="catalog-item__img" src="" alt="img">
     <h3 class="catalog-item__title">{{product.title}}</h3>
     <p class="catalog-item__price">{{product.price}}p</p>
-    <button class="catalog-item__add">Добавить в карзину</button>
+    <button class="catalog-item__add" @click="sendIdCard">Добавить в карзину</button>
   </div>
 </template>
 
@@ -13,6 +13,11 @@ export default {
   props:{
     product:{
       type: Object
+    }
+  },
+  methods:{
+    sendIdCard(){
+      this.$emit('sendIdCardss', this.product.id)
     }
   }
 }
